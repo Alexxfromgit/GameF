@@ -32,15 +32,21 @@ public class MainScript : MonoBehaviour
     {
         if (game.Solved())
             return;
+
         string name = EventSystem.current.currentSelectedGameObject.name;
+
         int x = int.Parse(name.Substring(0, 1));
         int y = int.Parse(name.Substring(1, 1));
+
         game.PressAt(x, y);
+
         if (game.PressAt(x, y) > 0)
         {
             sound.PlayMove();
-        }                    
+        }       
+        
         ShowButtons();
+
         if (game.Solved())
         {
             TextMoves.text = "Game finished in " + game.moves + " moves";
